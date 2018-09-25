@@ -1,0 +1,16 @@
+---
+
+lxde_pkgs:
+  - lxde
+  - lxsession-logout
+  #- firefox-esr
+
+windows_manager_pkgs:
+  Debian:
+    lxde:
+      - lxde
+    #- kde
+  RedHat:
+    lxde:
+      - lxde
+    #- kde

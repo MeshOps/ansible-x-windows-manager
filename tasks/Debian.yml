@@ -1,0 +1,7 @@
+---
+- name: Ensure that desired X Windows Manager(s) are installed
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  loop: "{{ lxde_pkgs }}"
