@@ -1,2 +1,2 @@
-# A role to install choice of X windows managers on Debian
+# A role to install a choice of X windows managers on Debian
 
