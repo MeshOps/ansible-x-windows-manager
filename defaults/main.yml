@@ -2,7 +2,7 @@
 
 lxde_pkgs:
   - lxde
-  - lxsession-logout
+  #- lxsession-logout
   #- firefox-esr
 
 windows_manager_pkgs:
