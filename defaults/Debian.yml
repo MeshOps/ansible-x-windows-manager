@@ -1,0 +1,10 @@
+---
+windows_manager_pkgs:
+  Debian:
+    x-windows:
+    - "x-windows-manager"
+    - "lxde"
+
+windows_manager_lxde:
+  - lxde
+  #- lxsession-logout

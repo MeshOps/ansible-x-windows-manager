@@ -1,7 +1,20 @@
 ---
-- name: Ensure that desired X Windows Manager(s) are installed
+- name: Ensure that a miminal X Windows is installed
+  apt:
+    name: "{{ Debian.x-windows.item }}"
+    state: latest
+    update_cache: yes
+    force_apt_get: true
+  loop: "{{ windows_manager_pkgs }}"
+  tags:
+  - x-windows-managers
+
+- name: Ensure that the desired X-Windows Managers are installed
   apt:
     name: "{{ item }}"
     state: latest
-    update_cache: yes
-  loop: "{{ lxde_pkgs }}"
+    update_cache: yes"
+    force_apt_get: true
+  loop: "{{ windows_manager_lxde }}"
+  tags:
+  - x-windows-managers

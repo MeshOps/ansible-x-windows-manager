@@ -1,7 +1,36 @@
 ---
-- name: Ensure that desired X Windows Manager(s) are installed
+- name: Ensure that a miminal X Windows is installed
+  yum:
+    name: "{{ RedHat.x-windows.item }}"
+    state: latest
+    update_cache: yes
+  loop: "{{ windows_manager_pkgs }}"
+  tags:
+  - epel
+  - x-windows-managers
+
+#- name:
+#  include: ../yum_repo/tasks/main.yml
+#  tags:
+#  - epel
+#  - x-windows-managers
+
+- name: Install epel
+  yum:
+    name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
+    state: present
+  tags:
+  - epel
+  - x-windows-managers
+
+- name: Ensure that the desired X-Windows Managers are installed from EPEL
   yum:
     name: "{{ item }}"
     state: latest
-    update_cache: yes
-  loop: "{{ lxde_pkgs }}"
+    update_cache: yes"
+    enablerepo: "epel"
+  loop: "{{ windows_manager_pkgs_epel }}"
+  tags:
+  - epel
+  - x-windows-managers
+

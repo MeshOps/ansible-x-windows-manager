@@ -1,12 +1,8 @@
 ---
 windows_manager_pkgs:
-  Debian:
-    x-windows:
-    - "x-windows-manager"
   RedHat:
     x-windows:
     - "@^x11"
-
 
 # Variable for the Yum Repo specific role
 yum_repo_name: "epel"
@@ -37,4 +33,3 @@ yum_repo_proxy_password: ""
 
 windows_manaher_pkgs_epel:
   - lxde
-  #- lxsession-logout
