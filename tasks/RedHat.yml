@@ -1,19 +1,28 @@
 ---
+- name: Include OS specific vars
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+      - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+      - "{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml"
+      - "{{ ansible_os_family }}-{{ ansible_distribution_major_version}}.yml"
+      - "{{ ansible_distribution }}.yml"
+      - "{{ ansible_os_family }}.yml"
+      paths:
+        - "{{ role_path }}/defaults"
+      skip: true
+  tags:
+    - vars
+    - -x-windows-managers
+
 - name: Ensure that a miminal X Windows is installed
   yum:
-    name: "{{ RedHat.x-windows.item }}"
+    name: "{{ item }}"
     state: latest
     update_cache: yes
   loop: "{{ windows_manager_pkgs }}"
   tags:
-  - epel
   - x-windows-managers
-
-#- name:
-#  include: ../yum_repo/tasks/main.yml
-#  tags:
-#  - epel
-#  - x-windows-managers
 
 - name: Install epel
   yum:

@@ -1,8 +1,7 @@
 ---
 windows_manager_pkgs:
-  RedHat:
-    x-windows:
-    - "@^x11"
+  x-windows:
+  - "@^x11"
 
 # Variable for the Yum Repo specific role
 yum_repo_name: "epel"
